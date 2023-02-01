@@ -1,6 +1,8 @@
-import Shapes
+import Shapes3D
+import csv
 
-foo = Shapes.Rectangle(12, 3)
-area = foo.GetArea
-
-print(f'area of a rectangle is {area}')
+class Solver:
+    with open("data.csv", mode ='r')as file:
+        csvFile = csv.reader(file, delimiter=',')
+        for lines in csvFile:
+            print(lines)

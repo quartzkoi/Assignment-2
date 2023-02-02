@@ -1,5 +1,7 @@
 import Shapes
 import math
+
+#Define variables of each shape, and set up calculation for area and volume
 #Cuboid
 class Cuboid:
     def __init__(self, height, width, length):
@@ -7,7 +9,7 @@ class Cuboid:
          self.height = height    
          self.length = length
     def area(self):
-        return 2 *((self.width * self.length)(self.height * self.length)(self.height * self.width))
+        return 2 *((self.width * self.length) + (self.height * self.length) + (self.height * self.width))
     def volume(self):
         return self.height * self.length * self.width
 
@@ -18,10 +20,10 @@ class Cube(Cuboid):
 
 #N-gonal prism
 class Prism:
-    def __init__(self, height, sideLength, sides):
+    def __init__(self, height, sides, sideLength):
         self.height = height
-        self.base = Shapes.Polygon(sideLength, sides).GetArea
-        self.perimeter = Shapes.Polygon(sideLength,sides).GetPerimeter
+        self.base = Shapes.Polygon(sides, sideLength).GetArea()
+        self.perimeter = Shapes.Polygon(sides, sideLength).GetPerimeter()
 
     def area(self):
         return (self.perimeter * self.height) + (2 * self.base)
@@ -29,21 +31,19 @@ class Prism:
         return self.base * self.height
 
 #Cylinder
-class Clyinder:
+class Cylinder:
     def __init__(self, radius, height):
         self.radius = radius
         self.height = height
-        self.base = Shapes.Circle(radius).GetArea()
-        self.area = self.area()
-        self.volume = self.volume()
+
     def area(self):
-        return (self.base * self.height)+(2 * self.base)
+        return (2 * math.pi * self.radius * self.height) + (2 * math.pi * self.radius**2)
     def volume(self):
-        return self.base*self.height
+        return math.pi * self.height * (self.radius**2)
 
 #Sphere
 class Sphere:
-    def __(self, radius):
+    def __init__(self, radius):
         self.radius = radius
     def area(self):
         return (4 * math.pi * (self.radius**2))

@@ -19,14 +19,14 @@ class Solver:
             elif lines[0] == "prism":
                 shapes.append(Shapes3D.Prism(float(lines[1]), float(lines[2]), float(lines[3])))
             elif lines[0] == "area": 
-                for shape in shapes:
-                    total += shape.area() # Add up previous shape areas, then clear shape list
-                total *= float(lines[1])
+                for shape in shapes: # Add up previous shape areas, then clear shape list
+                    total += sum(calc.area() for calc in shapes) * float(lines[1])
+                    shapes = []
                 shapes.clear()
-            elif lines[0] == "volume":
+            elif lines[0] == "volume": # Add up previous shape volumes, then clear shape list
                 for shape in shapes:
-                    total += shape.volume() # Add up previous shape volumes, then clear shape list
-                total *= float(lines[1])
+                    total += sum(calc.volume() for calc in shapes) * float(lines[1])
+                    shapes = []
                 shapes.clear()
 
     print(total) #Print total added value

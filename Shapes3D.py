@@ -1,3 +1,4 @@
+#Import Matt's given polygon calculations and the concept of mathematics
 import Shapes
 import math
 
@@ -37,7 +38,7 @@ class Cylinder:
         self.height = height
 
     def area(self):
-        return (2 * math.pi * self.radius * self.height) + (2 * math.pi * self.radius**2)
+        return (2 * math.pi * self.radius * self.height) + (2 * math.pi * (self.radius**2))
     def volume(self):
         return math.pi * self.height * (self.radius**2)
 

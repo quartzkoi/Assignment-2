@@ -20,7 +20,7 @@ class Cube(Cuboid):
 
 #N-gonal prism
 class Prism:
-    def __init__(self, height, sides, sideLength):
+    def __init__(self, sides, sideLength, height):
         self.height = height
         self.base = Shapes.Polygon(sides, sideLength).GetArea()
         self.perimeter = Shapes.Polygon(sides, sideLength).GetPerimeter()

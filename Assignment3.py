@@ -2,12 +2,12 @@ import Shapes3D
 import csv
 
 class Solver:
-    total = 0
-    shapes = []
+    total = 0 #create and empty list
+    shapes = [] #create a buffer for area/volume calculations
 
-    with open("example.csv", mode='r') as file:
+    with open("example.csv", mode='r') as file: #open csv file as read-only
         csvFile = csv.reader(file, delimiter=',')
-        for lines in csvFile:
+        for lines in csvFile: #for each line in the file, calculate per shape
             if lines[0] == "cube":
                 shapes.append(Shapes3D.Cube(float(lines[1])))
             elif lines[0] == "cuboid":
@@ -18,15 +18,15 @@ class Solver:
                 shapes.append(Shapes3D.Cylinder(float(lines[1]), float(lines[2])))
             elif lines[0] == "prism":
                 shapes.append(Shapes3D.Prism(float(lines[1]), float(lines[2]), float(lines[3])))
-            elif lines[0] == "area":
+            elif lines[0] == "area": 
                 for shape in shapes:
-                    total += shape.area()
+                    total += shape.area() # Add up previous shape areas, then clear shape list
                 total *= float(lines[1])
                 shapes.clear()
             elif lines[0] == "volume":
                 for shape in shapes:
-                    total += shape.volume()
+                    total += shape.volume() # Add up previous shape volumes, then clear shape list
                 total *= float(lines[1])
                 shapes.clear()
 
-    print(total)
+    print(total) #Print total added value
